@@ -1,9 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Flask MVT</title>
+    <title>Tickets</title>
 </head>
 <body>
-    <h1>Hello from Flask!</h1>
+    <h1>Tickets List</h1>
+    <ul>
+        {% for ticket in tickets %}
+            {% for tk in ticket.tk_data %}
+                <p>{{ ticket.ticket_id }} -> {{ tk.subject }}</p>
+            {% endfor %}
+
+            {% for tk in ticket.tk_email %}
+                <p>{{ tk.address }}</p>
+            {% endfor %}
+
+        {% endfor %}
+    </ul>
 </body>
 </html>
