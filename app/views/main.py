@@ -11,6 +11,7 @@ def test_view():
 
     return render_template('test.html', tickets=tickets)
 
+
 @main.route('/')
 def index():
     domains = group_domain_names()

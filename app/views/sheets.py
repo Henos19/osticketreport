@@ -18,4 +18,3 @@ def export_tickets():
         mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
     )
 
-

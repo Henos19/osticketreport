@@ -9,19 +9,17 @@ from openpyxl.utils import get_column_letter
 def create_sheet(url_query):
     tickets = Ticket.query
 
-    print(tickets.join(Ticket.tk_email).all())
-
     if url_query == '':
         tickets = tickets.all()
     else:
-        tickets = tickets.join(Ticket.tk_email).filter(UserEmail.address.like(f'%{url_query}%')).all()
+        tickets = tickets.join(Ticket.tk_email).filter(UserEmail.address.like(f'%{url_query}')).all()
 
     data = [{
         'Data de Criação': tck.created,
         'Nome': tck.tk_name[0].name,
         'Conteúdo': tck.tk_title[0].content,
         'Ticket': tck.number,
-        'Data de Finalzação': tck.closed,
+        'Data de Finalização': tck.closed,
     } for tck in tickets]
 
     df = pd.DataFrame(data)
