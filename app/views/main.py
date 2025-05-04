@@ -1,12 +1,19 @@
 from flask import Blueprint, render_template
-from app.models import Ticket, UserEmail
+from app.models import Ticket
+from app.views.utils.group_domain_names import group_domain_names
 
 main = Blueprint('main', __name__)
 
 
+@main.route('/test')
+def test_view():
+    tickets = Ticket.query.all()
+
+    return render_template('test.html', tickets=tickets)
+
 @main.route('/')
 def index():
-    addresses = UserEmail.query.all()
+    domains = group_domain_names()
 
-    return render_template('index.html', addresses=addresses)
+    return render_template('index.html', domains=domains)
 

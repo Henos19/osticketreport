@@ -9,10 +9,12 @@ from openpyxl.utils import get_column_letter
 def create_sheet(url_query):
     tickets = Ticket.query
 
+    print(tickets.join(Ticket.tk_email).all())
+
     if url_query == '':
         tickets = tickets.all()
     else:
-        tickets = tickets.join(Ticket.tk_email).filter(UserEmail.address == url_query).all()
+        tickets = tickets.join(Ticket.tk_email).filter(UserEmail.address.like(f'%{url_query}%')).all()
 
     data = [{
         'Data de Criação': tck.created,

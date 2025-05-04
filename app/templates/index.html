@@ -9,22 +9,10 @@
     <select id="office">
 
         <option value="">all</option>
-        {% for email_address in addresses %}
-            <option value="{{ email_address.address }}">{{email_address.address}}</option>
+        {% for domain in domains %}
+            <option value="{{ domain[0] }}">{{domain[0]}}</option>
         {% endfor %}
     </select>
-<!--        {% for ticket in tickets %}-->
-<!--            <p>{{ ticket.ticket_id }} -> {{ ticket.tk_data[0].subject }}</p>-->
-
-<!--            <p>{{ ticket.tk_title[0].content }}</p>-->
-
-<!--            <p>{{ ticket.tk_email[0].address }} || {{ ticket.tk_name[0].name }}</p>-->
-
-<!--            <p>{{ ticket.created }} || {{ ticket.closed }} || {{ ticket.number }}</p>-->
-
-<!--            </br>-->
-
-<!--        {% endfor %}-->
     <script>
         function downloadFiltered() {
             const selected = document.getElementById('office').value;
