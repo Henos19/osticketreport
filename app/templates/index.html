@@ -5,9 +5,14 @@
 </head>
 <body>
     <h1>OS Ticket Report</h1>
-    <a href="{{ url_for('sheets.export_tickets') }}">
-        <button>Gerar Tabela de Excel</button>
-    </a>
+    <button onclick="downloadFiltered()">Gerar Planilha</button>
+    <select id="office">
+
+        <option value="">all</option>
+        {% for email_address in addresses %}
+            <option value="{{ email_address.address }}">{{email_address.address}}</option>
+        {% endfor %}
+    </select>
 <!--        {% for ticket in tickets %}-->
 <!--            <p>{{ ticket.ticket_id }} -> {{ ticket.tk_data[0].subject }}</p>-->
 
@@ -20,5 +25,11 @@
 <!--            </br>-->
 
 <!--        {% endfor %}-->
+    <script>
+        function downloadFiltered() {
+            const selected = document.getElementById('office').value;
+            window.location.href = `/excel/tickets.xlsx?office=${selected}`;
+        }
+    </script>
 </body>
 </html>
