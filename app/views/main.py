@@ -7,7 +7,6 @@ main = Blueprint('main', __name__)
 
 @main.route('/')
 def index():
-    tickets = Ticket.query.options(db.joinedload(Ticket.tk_data)).all()
-
+    tickets = Ticket.query.all()
     return render_template('index.html', tickets=tickets)
 
