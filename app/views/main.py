@@ -1,6 +1,5 @@
 from flask import Blueprint, render_template
-from app.models import Ticket, TicketData
-from app.database import db
+from app.models import Ticket
 
 main = Blueprint('main', __name__)
 

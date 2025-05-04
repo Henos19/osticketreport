@@ -4,20 +4,21 @@
     <title>Tickets</title>
 </head>
 <body>
-    <h1>Tickets List</h1>
-    <ul>
-        {% for ticket in tickets %}
-            <p>{{ ticket.ticket_id }} -> {{ ticket.tk_data[0].subject }}</p>
+    <h1>OS Ticket Report</h1>
+    <a href="{{ url_for('sheets.export_tickets') }}">
+        <button>Gerar Tabela de Excel</button>
+    </a>
+<!--        {% for ticket in tickets %}-->
+<!--            <p>{{ ticket.ticket_id }} -> {{ ticket.tk_data[0].subject }}</p>-->
 
-            <p>{{ ticket.tk_title[0].content }}</p>
+<!--            <p>{{ ticket.tk_title[0].content }}</p>-->
 
-            <p>{{ ticket.tk_email[0].address }} || {{ ticket.tk_name[0].name }}</p>
+<!--            <p>{{ ticket.tk_email[0].address }} || {{ ticket.tk_name[0].name }}</p>-->
 
-            <p>{{ ticket.created }} || {{ ticket.closed }} || {{ ticket.number }}</p>
+<!--            <p>{{ ticket.created }} || {{ ticket.closed }} || {{ ticket.number }}</p>-->
 
-            </br>
+<!--            </br>-->
 
-        {% endfor %}
-    </ul>
+<!--        {% endfor %}-->
 </body>
 </html>
