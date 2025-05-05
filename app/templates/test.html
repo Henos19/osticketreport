@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Tickets</title>
-</head>
-<body>
-    <h1>OS Ticket Report</h1>
+{% extends "layout.html" %}
+
+{% block title %}Teste{% endblock %}
+
+{% block content %}
+ <h1>OS Ticket Report</h1>
     {% for ticket in tickets %}
         <p>{{ ticket.ticket_id }} -> {{ ticket.tk_data[0].subject }}</p>
 
@@ -16,5 +15,4 @@
 
         </br>
     {% endfor %}
-</body>
-</html>
+{% endblock %}

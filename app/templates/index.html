@@ -1,9 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Tickets</title>
-</head>
-<body>
+{% extends "layout.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <h2>Welcome!</h2>
+    <p>This is the homepage.</p>
     <h1>OS Ticket Report</h1>
     <button onclick="downloadFiltered()">Gerar Planilha</button>
     <select id="office">
@@ -19,5 +20,4 @@
             window.location.href = `/excel/tickets.xlsx?office=${selected}`;
         }
     </script>
-</body>
-</html>
+{% endblock %}
