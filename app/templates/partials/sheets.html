@@ -1,13 +1,30 @@
 <section>
-    <button onclick="downloadFiltered()">Gerar Planilha</button>
-    <select id="sheet-office">
-        <option value="">Todos os Escritórios</option>
-        {% for domain in domains %}
-            <option value="{{ domain[0] }}">{{domain[0]}}</option>
-        {% endfor %}
-        <input id="sheet-date" type="date" name="sheet-date">
-    </select>
+    <div>
+        <h1>Gerar Planilha</h1>
+    </div>
+    <div id="sheet-div">
+        <button id="sheet-btn" onclick="downloadFiltered()">Criar</button>
+        <select id="sheet-office">
+            <option value="">Todos os Escritórios</option>
+            {% for domain in domains %}
+                <option value="{{ domain[0] }}">{{domain[0]}}</option>
+            {% endfor %}
+            <input id="sheet-date" type="date" name="sheet-date">
+        </select>
+    </div>
     <script>
+        function getToday() {
+
+
+            const today = new Date()
+            const sheetCalendar = document.getElementById("sheet-date")
+
+            console.log(sheetCalendar)
+            sheetCalendar.setAttribute("max", today.toISOString().substring(0, 10))
+        }
+
+        getToday()
+
         function downloadFiltered() {
             const sheetOffice = document.getElementById('sheet-office').value;
             const sheetDate = document.getElementById('sheet-date').value;

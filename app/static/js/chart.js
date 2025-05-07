@@ -23,7 +23,7 @@ function fetchDataAndRenderChart() {
                     }]
                 },
                 options: {
-                    responsive: false,
+                    responsive: true,
                     scales: {
                         y: {
                             beginAtZero: true

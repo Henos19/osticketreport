@@ -16,8 +16,6 @@ def create_sheet(office, period):
         month=int(period_list[1]),
         day=int(period_list[2]))
 
-    print(time_period)
-
     tickets = Ticket.query
 
     if office == '':
