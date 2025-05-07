@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -22,21 +28,25 @@ nav a {
     margin-right: 15px;
 }
 
-main {
-    padding: 20px;
+#main-div {
+    display: flex;
+    flex-direction: row;
+    height: 99vh;
 }
 
-table {
-    border-collapse: collapse;
-    width: 100%;
-    background: white;
+#content-div {
+    padding: 16px;
+    width: 90%;
 }
 
-th, td {
-    padding: 10px;
-    border: 1px solid #ddd;
+#left-nav {
+    width: 6em;
+    background-color: #04AA6D;
+    padding: 8px;
 }
 
-th {
-    background-color: #e0e0e0;
+#dashboard {
+    margin-bottom: 8px; /* This will be changed by gap */
+    height: 200px;
+    background-color: gray;
 }

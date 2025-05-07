@@ -7,12 +7,18 @@
 <body>
 
     <header style="background:#333; color:white; padding:10px;">
-        <h1>📧 Email Dashboard</h1>
+        <h1>📧 OS Ticket Report</h1>
     </header>
 
-    <main style="padding: 20px;">
-        {% block content %}{% endblock %}
-    </main>
+    <div id="main-div">
+        <nav id="left-nav">
+            <h3>---</h3>
+        </nav>
+        <main id="content-div">
+            {% block content %}{% endblock %}
+            {% block sheetsGenerator %}{% endblock %}
+        </main>
+    </div>
 
 </body>
 </html>

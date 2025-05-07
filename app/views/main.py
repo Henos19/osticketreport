@@ -16,5 +16,5 @@ def test_view():
 def index():
     domains = group_domain_names()
 
-    return render_template('index.html', domains=domains)
+    return render_template('home.html', domains=domains)
 
