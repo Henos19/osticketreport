@@ -47,6 +47,8 @@ nav a {
 
 #dashboard {
     margin-bottom: 8px; /* This will be changed by gap */
-    height: 200px;
-    background-color: gray;
+}
+
+#canva-dash {
+    width: 80%;
 }

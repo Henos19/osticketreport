@@ -11,7 +11,6 @@ def group_domain_names():
             func.count().label('total')
         )
         .group_by(domain_expr)
-        .order_by(func.count().desc())
         .all()
     )
 

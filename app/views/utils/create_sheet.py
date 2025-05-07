@@ -6,13 +6,25 @@ import pandas as pd
 from openpyxl.styles import Alignment, PatternFill, Font
 from openpyxl.utils import get_column_letter
 
-def create_sheet(url_query):
+from datetime import datetime
+
+def create_sheet(office, period):
+    period_list = period.split("-")
+
+    time_period = datetime(
+        year=int(period_list[0]),
+        month=int(period_list[1]),
+        day=int(period_list[2]))
+
+    print(time_period)
+
     tickets = Ticket.query
 
-    if url_query == '':
+    if office == '':
         tickets = tickets.all()
     else:
-        tickets = tickets.join(Ticket.tk_email).filter(UserEmail.address.like(f'%{url_query}')).all()
+        tickets = (tickets.filter(UserEmail.address.like(f'%{office}'), Ticket.created >= time_period)
+                   .all())
 
     data = [{
         'Data de Criação': tck.created,

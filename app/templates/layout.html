@@ -3,6 +3,7 @@
 <head>
     <title>{% block title %}My App{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
@@ -19,6 +20,5 @@
             {% block sheetsGenerator %}{% endblock %}
         </main>
     </div>
-
 </body>
 </html>

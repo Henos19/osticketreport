@@ -1,16 +1,17 @@
 <section>
     <button onclick="downloadFiltered()">Gerar Planilha</button>
-    <select id="office">
-
-        <option value="">all</option>
+    <select id="sheet-office">
+        <option value="">Todos os Escritórios</option>
         {% for domain in domains %}
             <option value="{{ domain[0] }}">{{domain[0]}}</option>
         {% endfor %}
+        <input id="sheet-date" type="date" name="sheet-date">
     </select>
     <script>
         function downloadFiltered() {
-            const selected = document.getElementById('office').value;
-            window.location.href = `/excel/tickets.xlsx?office=${selected}`;
+            const sheetOffice = document.getElementById('sheet-office').value;
+            const sheetDate = document.getElementById('sheet-date').value;
+            window.location.href = `/excel/tickets.xlsx?office=${sheetOffice}&date=${sheetDate}`;
         }
     </script>
 </section>
