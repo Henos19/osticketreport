@@ -5,7 +5,7 @@ class Ticket(db.Model):
     __tablename__ = 'ost_ticket'
 
     ticket_id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer)
+    user_id = db.Column(db.Integer, db.ForeignKey('ost_user_email.user_id'))
     created = db.Column(db.DateTime)
     closed = db.Column(db.DateTime)
     number = db.Column(db.Integer)
@@ -27,7 +27,7 @@ class TicketData(db.Model):
 class UserEmail(db.Model):
     __tablename__ = 'ost_user_email'
 
-    user_id = db.Column(db.Integer, db.ForeignKey('ost_ticket.user_id'), primary_key=True)
+    user_id = db.Column(db.Integer, primary_key=True)
     address = db.Column(db.String(255))
 
 

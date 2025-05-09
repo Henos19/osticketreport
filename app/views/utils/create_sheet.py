@@ -2,27 +2,22 @@ from io import BytesIO
 
 from app.models import Ticket, UserEmail
 
+from sqlalchemy import and_
+
 import pandas as pd
 from openpyxl.styles import Alignment, PatternFill, Font
 from openpyxl.utils import get_column_letter
 
 from datetime import datetime
 
-def create_sheet(office, period):
-    period_list = period.split("-")
-
-    time_period = datetime(
-        year=int(period_list[0]),
-        month=int(period_list[1]),
-        day=int(period_list[2]))
-
-    tickets = Ticket.query
-
-    if office == '':
-        tickets = tickets.all()
-    else:
-        tickets = (tickets.filter(UserEmail.address.like(f'%{office}'), Ticket.created >= time_period)
-                   .all())
+def create_sheet(office, init_date, end_date):
+    tickets = (Ticket.query.join(UserEmail).filter(
+                and_(
+                    UserEmail.address.like(f'%{office}'),
+                    Ticket.created >= datetime.combine(init_date, datetime.min.time()),
+                    Ticket.created <= datetime.combine(end_date, datetime.min.time())
+                )
+        ).all())
 
     data = [{
         'Data de Criação': tck.created,

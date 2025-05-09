@@ -3,32 +3,42 @@
         <h1>Gerar Planilha</h1>
     </div>
     <div id="sheet-div">
-        <button id="sheet-btn" onclick="downloadFiltered()">Criar</button>
-        <select id="sheet-office">
-            <option value="">Todos os Escritórios</option>
-            {% for domain in domains %}
-                <option value="{{ domain[0] }}">{{domain[0]}}</option>
-            {% endfor %}
-            <input id="sheet-date" type="date" name="sheet-date">
-        </select>
+        <div>
+            <label class="sheet-label" for="sheet-office">Domínio de E-mail:</label>
+            <select class="sheet-item" id="sheet-office">
+                <option value="">Todos</option>
+                {% for domain in domains %}
+                    <option value="{{ domain[0] }}">{{domain[0]}}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div>
+            <label class="sheet-label" for="init-date"> De:
+                <input class="sheet-item cal" type="date" name="init-date" id="init-date">
+            </label>
+            <label class="sheet-label" for="end-date"> Até:
+                <input class="sheet-item cal" type="date" name="end-date" id="end-date">
+            </label>
+        </div>
+        <button class="sheet-item" id="sheet-btn" onclick="downloadFiltered()">Criar</button>
     </div>
     <script>
-        function getToday() {
-
-
+        const getToday = (() => {
             const today = new Date()
-            const sheetCalendar = document.getElementById("sheet-date")
+            const initDate = document.getElementsByName("init-date")[0]
+            const endDate = document.getElementsByName("end-date")[0]
 
-            console.log(sheetCalendar)
-            sheetCalendar.setAttribute("max", today.toISOString().substring(0, 10))
-        }
-
-        getToday()
+            initDate.setAttribute("max", today.toISOString().substring(0, 10))
+            endDate.setAttribute("max", today.toISOString().substring(0, 10))
+        })()
 
         function downloadFiltered() {
             const sheetOffice = document.getElementById('sheet-office').value;
-            const sheetDate = document.getElementById('sheet-date').value;
-            window.location.href = `/excel/tickets.xlsx?office=${sheetOffice}&date=${sheetDate}`;
+            const initDate = document.getElementsByName('init-date')[0].value;
+            const endDate = document.getElementsByName('end-date')[0].value;
+
+            window.location.href = `/excel/tickets.xlsx?office=${sheetOffice}&initDate=${initDate}&endDate=${endDate}`;
         }
     </script>
 </section>
